@@ -1,11 +1,20 @@
 # Test common_utils
 
-[ "$(abspath foo)" == "$PWD/foo" ] || ingest "abspath foo"
-[ "$(abspath foo/bar)" == "$PWD/foo/bar" ] || ingest "abspath foo/bar"
-[ "$(abspath /foo)" == "/foo" ] || ingest "abspath /foo"
-[ "$(relpath $PWD/foo)" == "foo" ] || ingest "relpath foo"
-[ "$(relpath foo/bar foo)" == "bar" ] || ingest "relpath foo/bar"
-[ "$(realpath /foo)" == "/foo" ] || ingest "realpath /foo"
+if [ -z "$IS_CYGWIN" ]; then
+	[ "$(abspath foo)" == "$PWD/foo" ] || ingest "abspath foo"
+	[ "$(abspath foo/bar)" == "$PWD/foo/bar" ] || ingest "abspath foo/bar"
+	[ "$(abspath /foo)" == "/foo" ] || ingest "abspath /foo"
+	[ "$(relpath $PWD/foo)" == "foo" ] || ingest "relpath foo"
+	[ "$(relpath foo/bar foo)" == "bar" ] || ingest "relpath foo/bar"
+	[ "$(realpath /foo)" == "/foo" ] || ingest "realpath /foo"
+else
+	cygpwd=$(cygpath -w $PWD)
+	[ "$(abspath foo)" == "$cygpwd\foo" ] || ingest "abspath foo"
+	[ "$(abspath foo/bar)" == "$cygpwd\foo\bar" ] || ingest "abspath foo/bar"
+	[ "$(relpath $PWD/foo)" == "foo" ] || ingest "relpath foo"
+	[ "$(relpath foo/bar foo)" == "bar" ] || ingest "relpath foo/bar"
+
+fi
 
 [ "$(lex_ver 2)" == "002000000" ] || ingest "lex_ver 2"
 [ "$(lex_ver 2.1)" == "002001000" ] || ingest "lex_ver 2.1"
