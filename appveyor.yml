@@ -8,8 +8,6 @@ matrix:
 
 install:
   - env
-  - SET PATH="C:\Cygwin\bin";%PATH%
-  - env
 
 build: false
 
