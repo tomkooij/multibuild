@@ -1,5 +1,7 @@
-enviroment:
-  SHELLOPTS: igncr
+environment:
+  global:
+    SHELLOPTS: igncr
+    CYG_BASH: C:\Cygwin\bin\bash
 
 matrix:
   fast_finish: true
@@ -12,4 +14,4 @@ install:
 build: false
 
 test_script:
-  - "C:\cygwin\bin\bash" tests\test_multibuild.sh 
+  - '%CYGBASH% tests\test_multibuild.sh' 
