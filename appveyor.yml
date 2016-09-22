@@ -1,0 +1,15 @@
+enviroment:
+  SHELLOPTS: igncr
+
+matrix:
+  fast_finish: true
+
+install:
+  - env
+  - SET PATH="C:\Cygwin\bin";%PATH%
+  - env
+
+build: false
+
+test_script:
+  - "C:\cygwin\bin\bash" tests\test_multibuild.sh 
