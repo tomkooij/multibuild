@@ -22,6 +22,9 @@ MB_PYTHON_VERSION=${MB_PYTHON_VERSION:-$TRAVIS_PYTHON_VERSION}
 function before_install {
     # Install a virtualenv to work in.
     virtualenv -p $PYTHON\\python.exe venv
+    ls
+    ls venv
+    ls venv/bin
     source venv/bin/activate
     python --version # just to check
     pip install --upgrade pip wheel
