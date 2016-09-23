@@ -59,8 +59,9 @@ before_build:
 
 build_script:
     # Maybe get and clean and patch source
-    - '%CYG_BASH% -lc "clean_code $REPO_DIR $BUILD_COMMIT"'
-    - '%CYG_BASH% -lc "build_wheel $REPO_DIR $PLAT"'
+    - '%CYG_BASH% -c "python --version'
+    - '%CYG_BASH% -c "clean_code $REPO_DIR $BUILD_COMMIT"'
+    - '%CYG_BASH% -c "build_wheel $REPO_DIR $PLAT"'
 
 test_script:
     - '%CYG_BASH% -lc "install_run $PLAT"'
