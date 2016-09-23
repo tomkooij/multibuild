@@ -24,8 +24,8 @@ function before_install {
     virtualenv -p $PYTHON\\python.exe venv
     ls
     ls venv
-    ls venv/bin
-    source venv/bin/activate
+    ls venv/Scripts
+    source venv/Scripts/activate
     python --version # just to check
     pip install --upgrade pip wheel
 }
