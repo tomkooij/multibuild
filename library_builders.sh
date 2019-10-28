@@ -197,7 +197,7 @@ function build_hdf5 {
     local hdf5_url=https://www.hdfgroup.org/ftp/HDF5/releases
     fetch_unpack $hdf5_url/hdf5-$HDF5_VERSION/src/hdf5-$HDF5_VERSION.tar.gz
     (cd hdf5-$HDF5_VERSION \
-        && ./configure --with-szlib=$BUILD_PREFIX --prefix=$BUILD_PREFIX \
+        && ./configure --with-szlib=$BUILD_PREFIX --prefix=$BUILD_PREFIX --enable-thread-safe \
         && make \
         && make install)
     touch hdf5-stamp
